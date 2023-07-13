@@ -59,18 +59,15 @@ The project has the following dependencies:
 
 2. Install the necessary dependencies using pip or conda package manager.
 
-'''
-bash
-Copy code
+```
 pip install -r requirements.txt
-3. Run the Streamlit application to launch the web interface.
-'''
+```
 
-'''
-bash
-Copy code
+3. Run the Streamlit application to launch the web interface.
+
+```
 streamlit run app.py
-'''
+```
 4. Follow the instructions on the web interface to input your investor preferences and generate predictions for startup operating status.
 
 ## How to Use

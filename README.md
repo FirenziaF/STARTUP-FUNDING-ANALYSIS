@@ -1,4 +1,5 @@
 <h1 style="text-align: center;"><span style="color: #FF0000;">STARTUP FUNDING ANALYSIS:</span> <strong><span style="color: #0000FF;">Exploring Venture Capital Investments in Various Industries</span></strong></h1>
+
 ![Alt text](./startupimage1.jpg)
 
 ## Project Overview

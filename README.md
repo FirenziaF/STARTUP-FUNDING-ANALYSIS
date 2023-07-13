@@ -27,22 +27,6 @@ The chosen Decision Tree model was further improved through hyperparameter tunin
 ## Deployment and Interactive Interface:
 The trained model was deployed using the Streamlit framework to create an interactive web application. The application allows users to input their investor preferences, such as desired investment amount, investment timeframe, and risk appetite. Based on these preferences and the selected features, the model generates predictions for the operating status of startups. Additionally, investment recommendations and additional information about recommended startups are provided to assist users in making informed investment decisions.
 
-
-## Project Structure
-The project is structured into several main components:
-
-1. **Data Preprocessing**: The dataset is preprocessed to handle missing values, transform categorical variables into numerical representations, and create new categorical features based on descriptive summaries.
-
-2. **Exploratory Data Analysis (EDA)**: EDA is performed to gain insights into the dataset, identify patterns, and detect potential correlations between variables. Visualizations such as histograms, bar plots, and correlation matrices are used to explore the data.
-
-3. **Feature Engineering**: Feature engineering techniques are applied to enhance the predictive power of the model. New categorical features are created based on the values of certain numerical features to capture relevant information and improve the model's performance.
-
-4. **Model Training**: The Decision Tree classifier is selected as the model for predicting the operating status of startups. The model is trained on the preprocessed data using a combination of selected features and the corresponding target variable.
-
-5. **Model Evaluation**: The trained model is evaluated using various metrics such as accuracy, precision, recall, and F1-score to assess its performance and determine its predictive capabilities.
-
-6. **Model Deployment**: The trained model is deployed using the Streamlit framework to create an interactive web application. The application allows users to input their investor preferences, such as desired investment amount, investment timeframe, and risk appetite. Based on these preferences and the selected features, the model generates predictions for the operating status of startups. Investment recommendations and additional information about recommended startups are also provided.
-
 ## Dependencies
 The project has the following dependencies:
 
@@ -53,8 +37,9 @@ The project has the following dependencies:
 * Seaborn
 * Scikit-learn
 * XGBoost
-*Mlxtend
+* Mlxtend
 * Streamlit
+
 ## Installation and Usage
 1. Clone the repository to your local machine.
 
@@ -86,6 +71,21 @@ streamlit run app.py
 
 ## Project Documentation
 For a detailed overview of the project, including the data preprocessing steps, EDA findings, feature engineering techniques, model training, and evaluation, please refer to the Project Documentation.
+
+## Project Structure
+The project is structured into several main components:
+
+1. **Data Preprocessing**: The dataset is preprocessed to handle missing values, transform categorical variables into numerical representations, and create new categorical features based on descriptive summaries.
+
+2. **Exploratory Data Analysis (EDA)**: EDA is performed to gain insights into the dataset, identify patterns, and detect potential correlations between variables. Visualizations such as histograms, bar plots, and correlation matrices are used to explore the data.
+
+3. **Feature Engineering**: Feature engineering techniques are applied to enhance the predictive power of the model. New categorical features are created based on the values of certain numerical features to capture relevant information and improve the model's performance.
+
+4. **Model Training**: The Decision Tree classifier is selected as the model for predicting the operating status of startups. The model is trained on the preprocessed data using a combination of selected features and the corresponding target variable.
+
+5. **Model Evaluation**: The trained model is evaluated using various metrics such as accuracy, precision, recall, and F1-score to assess its performance and determine its predictive capabilities.
+
+6. **Model Deployment**: The trained model is deployed using the Streamlit framework to create an interactive web application. The application allows users to input their investor preferences, such as desired investment amount, investment timeframe, and risk appetite. Based on these preferences and the selected features, the model generates predictions for the operating status of startups. Investment recommendations and additional information about recommended startups are also provided.
 
 ## Conclusion and Recommendations
 1. Based on the analysis conducted in this project, several key findings and recommendations can be made to assist investors in making informed decisions:

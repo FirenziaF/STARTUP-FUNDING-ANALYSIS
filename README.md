@@ -59,18 +59,18 @@ The project has the following dependencies:
 
 2. Install the necessary dependencies using pip or conda package manager.
 
-"""
+'''
 bash
 Copy code
 pip install -r requirements.txt
 3. Run the Streamlit application to launch the web interface.
-""'
+'''
 
-"""
+'''
 bash
 Copy code
 streamlit run app.py
-"""
+'''
 4. Follow the instructions on the web interface to input your investor preferences and generate predictions for startup operating status.
 
 ## How to Use
@@ -84,7 +84,7 @@ streamlit run app.py
 
 5. Explore the visualization and insights section to gain further understanding of the data and the factors influencing startup operating status.
 
-6 You can modify your investor preferences and click the "Generate Recommendations" button again to obtain updated predictions and recommendations.
+6. You can modify your investor preferences and click the "Generate Recommendations" button again to obtain updated predictions and recommendations.
 
 ## Project Documentation
 For a detailed overview of the project, including the data preprocessing steps, EDA findings, feature engineering techniques, model training, and evaluation, please refer to the Project Documentation.

@@ -1,6 +1,6 @@
 <h1 style="text-align: center;"><span style="color: #FF0000;">STARTUP FUNDING ANALYSIS:</span> <strong><span style="color: #0000FF;">Exploring Venture Capital Investments in Various Industries</span></strong></h1>
 
-![Alt text](./startupimage1.jpeg)
+![Alt text](./startupimage1.jpg)
 Investments in Various Industries
 ## Project Overview
 This data science project aims to predict the operating status of startups using machine learning techniques. The project involves analyzing a dataset containing information about startups, performing data preprocessing, conducting exploratory data analysis (EDA), feature engineering, model training, and deploying a predictive model using Streamlit.
@@ -74,6 +74,19 @@ streamlit run app.py
 """
 4. Follow the instructions on the web interface to input your investor preferences and generate predictions for startup operating status.
 
+## How to Use
+1. Open the web application in your browser after running the Streamlit application.
+
+2. On the sidebar, you will find the "Investor Preferences" section. Fill in the desired investment amount, investment timeframe, and risk appetite.
+
+3. Click the "Generate Recommendations" button to generate predictions and recommendations based on your preferences.
+
+4. The application will display the predicted operating status of startups based on the selected features and preferences. It will also provide investment recommendations and additional information about the recommended startups.
+
+5. Explore the visualization and insights section to gain further understanding of the data and the factors influencing startup operating status.
+
+6 You can modify your investor preferences and click the "Generate Recommendations" button again to obtain updated predictions and recommendations.
+
 ## Project Documentation
 For a detailed overview of the project, including the data preprocessing steps, EDA findings, feature engineering techniques, model training, and evaluation, please refer to the Project Documentation.
 
@@ -108,7 +121,7 @@ This project is licensed under the MIT License.
 The dataset used in this project is provided by Crunchbase. Special thanks to the open-source community for their valuable contributions to the libraries and tools used in this project.
 
 ## Contributors
-This project was developed by  as part of [Data Science Bootcamp] at [Moring Schoo;]. Contributions and suggestions are welcome. Feel free to submit a pull request or open an issue.
+This project was developed by  as part of [Data Science Bootcamp] at [Moringa School]. Contributions and suggestions are welcome. Feel free to submit a pull request or open an issue.
 
 Special thanks to our Moringa School Data Science Technical Mentors for their guidance throughout the project. We would also like to acknowledge the contributions of the Elites team members:
 

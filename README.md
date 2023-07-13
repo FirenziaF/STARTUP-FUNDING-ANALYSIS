@@ -1,7 +1,6 @@
 <h1 style="text-align: center;"><span style="color: #FF0000;">STARTUP FUNDING ANALYSIS:</span> <strong><span style="color: #0000FF;">Exploring Venture Capital Investments in Various Industries</span></strong></h1>
-
 ![Alt text](./startupimage1.jpg)
-Investments in Various Industries
+
 ## Project Overview
 This data science project aims to predict the operating status of startups using machine learning techniques. The project involves analyzing a dataset containing information about startups, performing data preprocessing, conducting exploratory data analysis (EDA), feature engineering, model training, and deploying a predictive model using Streamlit.
 

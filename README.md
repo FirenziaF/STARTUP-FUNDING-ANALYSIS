@@ -1,15 +1,11 @@
-# **THE-BAGDGERS-CAPSTONE-PROJECT**
+# **THE-BAGDGERS-CAPSTONE-PROJECT.**
 
 # **STARTUP FUNDING ANALYSIS:** Exploring Venture Capital Investments in Various Industries.
 
-![Alt text](./startupimage1.jpg) 
+![Alt text](./startupimage2.jpeg) 
 
 # **Introduction.**
 In today's rapidly evolving business landscape, the allure of founding a startup with a groundbreaking idea has captivated the imagination of many aspiring entrepreneurs. However, without a firm grasp of the past and insights from previous startup experiences, venturing into this exhilarating journey can be perilous. The dataset used in this kernel provides a unique opportunity to delve into the world of startups and gain a comprehensive understanding of their dynamics, challenges, and triumphs.
-
-
-![Alt text](./startupimage2.jpeg) 
-
 
 
 # **Problem Statement.**
@@ -38,6 +34,22 @@ This phase involved engaging in data cleaning and transformation, organization o
 
 # **Modelling.**
 
+The dataset was divided into two sets: the training dataset and the test dataset. The baseline model was established by employing a Random Forest. Additionally, the following datasets were used:
+
+-Decision Tree.
+
+-XGBoosting.
+
+-ADABoosting.
+
+# **Model Evaluation.**
+The model selection was based on the following criteria:
+
+ -Model Train and Test Accuracy.
+ 
+ -Cross Validation Accuracy.
+ 
+ -Log Loss.
 
 
 # **Contributing Members.**

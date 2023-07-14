@@ -1,158 +1,71 @@
 import streamlit as st
-import pickle
 import joblib
-import numpy as np
-import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import pickle
 
-# model = pickle.load(open("xgb_model.pkl", "rb"))
+# Load the pickled model
+model_path = 'xgb.pkl'  # Replace with the path to your pickled model
 
-# # Create the Streamlit application
-# def main():
-#     # Set the title and description
-#     st.title("Startup Investment Decision Support")
-#     st.subheader("Input startup information and investor preferences")
+try:
+    model = joblib.load(model_path)
+except FileNotFoundError:
+    st.error(f"Model file '{model_path}' not found.")
+    st.stop()
 
+# Load the DataFrame and calculate column value counts
+df = pd.read_csv('datattt.csv')  # Replace with the path to your data file
 
-#     # Startup Information Inputs
-#     st.sidebar.header("Startup Information")
-#     industry = st.sidebar.selectbox("Industry", ["Biotechnology", "Software", "Healthcare", "Advertising", "Games", "Enterprise Software", "Curated Web", "E-commerce", "Mobile", "Unspecified"])
-#     funding_stage = st.sidebar.selectbox("Funding Stage", ["Seed", "Round A", "Round B", "Round C", "Round D"])
-#     total_investment = st.sidebar.number_input("Total Investment", min_value=0.0)
-#     equity_crowdfunding = st.sidebar.checkbox("Equity Crowdfunding")
-    
-    
-#     # Investor Preferences Inputs
-#     st.sidebar.header("Investor Preferences")
-#     desired_investment = st.sidebar.number_input("Desired Investment Amount", min_value=0.0)
-#     investment_timeframe = st.sidebar.selectbox("Investment Timeframe", ["Short-term", "Medium-term", "Long-term"])
-#     risk_appetite = st.sidebar.slider("Risk Appetite", min_value=1, max_value=10, step=1)
-#     desired_age = st.sidebar.slider("Desired Age", min_value=1, max_value=10, step=1)
-    
-    
-#     # Perform predictions and recommendations
-#     if st.button("Generate Recommendations"):
-#         # Call your model or recommendation engine to generate predictions and recommendations
-#         # Based on the provided startup information and investor preferences
-        
-#         int_features = [float(x) for x in request.form.values()]
-#         features = [np.array(int_features)]
-        
-#         operating_status = model.predict(features)  # Replace with model prediction
-#         recommendations = ["Operational", "Acquired", "Closed"]  # Replace with recommendation engine results
+column_value_counts = {}
 
+for column in df.columns:
+    column_value_counts[column] = df[column].value_counts()
 
-#         # Display the results
-#         st.subheader("Predicted Operating Status:")
-#         st.write(operating_status)
+# Define the input fields
+feature_names = ['Founded_year', 'time_to_first_funding', 'city', 'round_D', 'round_C', 'funding_rounds', 'Industry_Group', 'round_F', 'region', 'round_B']
 
-#         st.subheader("Investment Recommendations:")
-#         for recommendation in recommendations:
-#             st.write("- " + recommendation)
+# Create mapping dictionaries for categorical features
+city_mapping = {"New York City": 0, "San Francisco": 1, "London": 2, "Austin": 3, "Seattle": 4, "Palo Alto": 5, "Cambridge": 6, "Chicago": 7, "Mountain View": 8}
+region_mapping = {"United States": 0, "China": 1, "Great Britain": 2, "India": 3, "Canada": 4, "Germany": 5, "Israel": 6, "France": 7, "Netherlands": 8, "Spain": 9}
 
+# funding_rounds_mapping = {"Round A": 0, "Round B": 1, "Round C": 2, "Round D": 3, "Round E": 4, "Round F": 5, "Round G": 6, "Round H": 7}
+industry_group_mapping = {"Software": 0, "Biotechnology": 1, "Healthcare": 2, "Mobile": 3, "Advertising": 4, "E-Commerce": 5, "Curated Web": 6, "Enterprise Software": 7, "Games": 8, "Other": 9}
 
-#     # Display additional information or insights if needed
-    
-    
-#         # Probable Locations
-#         st.subheader("Investment Location")
-#         probable_locations = ["New York City", "San francisco", 'London', "Austin", "Seattle", "Palo Alto", "Cambridge"]   # Add more locations based on predicted market
-#         st.markdown("*Probable Location:* {}".format(", ".join([location for location in probable_locations])))
+# Create a dictionary for available cities based on regions
+region_cities_mapping = {
+    "United States": ["New York City", "San Francisco", "Austin", "Seattle", "Chicago", "Mountain View"],
+    "China": ["Beijing", "Shanghai", "Hangzhou", "Shenzhen"],
+    "Great Britain": ["London", "Cambridge"],
+    "India": ["Bangalore", "Mumbai", "New Delhi"],
+    "Canada": ["Toronto", "Vancouver", "Montreal"],
+    "Germany": ["Berlin", "Munich", "Hamburg"],
+    "Israel": ["Tel Aviv", "Jerusalem", "Haifa"],
+    "France": ["Paris", "Lyon", "Marseille"],
+    "Netherlands": ["Amsterdam", "Rotterdam", "Utrecht"],
+    "Spain": ["Barcelona", "Madrid", "Valencia"]
+}
 
+def predict_total_investment(features):
+    # Create a DataFrame with the input values
+    input_data = pd.DataFrame([features], columns=feature_names)
 
-# if __name__ == "__main__":
-#     main()
+    # Map categorical features to encoded values
+    input_data["city"] = input_data["city"].map(city_mapping)
+    input_data["region"] = input_data["region"].map(region_mapping)
+    input_data["Industry_Group"] = input_data["Industry_Group"].map(industry_group_mapping)
 
-# ######################################################################
+    # Make predictions using the pre-trained model
+    prediction = model.predict(input_data)[0]
 
-# Set the background image using CSS   
+    return prediction
 
-# page_bg_img = """
-#     <style>
-#     [data-testid="stAppViewContainer"] {
-#         background-image: url("https://img.freepik.com/premium-photo/ambitious-business-man-climbing-stairs-success_31965-3080.jpg?w=826");
-#         background-size: cover;
-#         background-position: top left;
-#         background-repeat: no-repeat;
-#     }
-    
-#     [data-testid="stHeader"] {
-#         background-color: rgba(0,0,0,0);
-#     }
-    
-#     [data-testid="Toolbar"] {
-#         right: 2rem;
-#     }
-#     </style>
-#     """     
-    
-# st.markdown(page_bg_img, unsafe_allow_html=True)
+def load_model():
+    with open('xgb.pkl', 'rb') as f:
+        model = pickle.load(f)
+    return model
 
-# # Create the Streamlit application
-# def main():
-#     # Call the set_background function
-#     # set_background()
-
-#     # Set the title and description
-#     st.title("Startup Investment Decision Support")
-#     st.subheader("Input startup information and investor preferences")
-
-#     # Startup Information Inputs
-#     st.sidebar.header("Startup Information")
-#     industry = st.sidebar.selectbox("Industry", ["Biotechnology", "Software", "Healthcare", "Advertising", "Games", "Enterprise Software", "Curated Web", "E-commerce", "Mobile", "Other"])
-#     funding_stage = st.sidebar.selectbox("Funding Stage", ["Seed", "Round A", "Round B", "Round C", "Round D"])
-#     total_investment = st.sidebar.number_input("Total Investment", min_value=0.0)
-#     equity_crowdfunding = st.sidebar.checkbox("Equity Crowdfunding")
-
-#     # Investor Preferences Inputs
-#     st.sidebar.header("Investor Preferences")
-#     desired_investment = st.sidebar.number_input("Desired Investment Amount", min_value=0.0)
-#     investment_timeframe = st.sidebar.selectbox("Investment Timeframe", ["Short-term", "Medium-term", "Long-term"])
-#     risk_appetite = st.sidebar.slider("Risk Appetite", min_value=1, max_value=10, step=1)
-#     desired_age = st.sidebar.slider("Desired Age", min_value=0, max_value=10, step=1)
-
-#     # Perform predictions and recommendations
-#     if st.button("Generate Recommendations"):
-#         # Call your model or recommendation engine to generate predictions and recommendations
-#         # Based on the provided startup information and investor preferences
-
-#         features = [total_investment, equity_crowdfunding, desired_investment, investment_timeframe, risk_appetite, desired_age]
-#         operating_status = "operational/ non-operational" # model.predict([features])  # Replace with model prediction
-#         recommendations = ["Operational", "Acquired", "Closed"]  # Replace with recommendation engine results
-
-#         # Display the results
-#         st.subheader("Predicted Operating Status:")
-#         st.write(operating_status)
-
-#         st.subheader("Investment Recommendations:")
-#         for recommendation in recommendations:
-#             st.write("- " + recommendation)
-
-#     # Display additional information or insights if needed
-#     # Probable Locations
-#     st.subheader("Investment Location")
-#     probable_locations = ["New York City", "San Francisco", "London", "Austin", "Seattle", "Palo Alto", "Cambridge"]   # Add more locations based on predicted market
-#     st.markdown("*Probable Location:* {}".format(", ".join([location for location in probable_locations])))
-#     st.markdown(
-#         f"""
-#         <p>
-#         Phone: +254 712-254-856 / +254 712-254-857
-#         <br>
-#         Email Address: data.<EMAIL>@gmail.com/info@examplecompany.com
-#         <br>
-#         <a href="data.badger@hotmail.com">
-#         You can get in touch with us at the links provided
-#         </p>
-#         """,
-#         unsafe_allow_html=True
-#     )
-
-# if __name__ == "__main__":
-#     main()
-
-#  #####################################################
-
-# Set the background image using CSS   
-page_bg_img = """
+def page_home():
+    page_bg_img = """
     <style>
     [data-testid="stAppViewContainer"] {
         background-image: url("https://img.freepik.com/premium-photo/ambitious-business-man-climbing-stairs-success_31965-3080.jpg?w=826");
@@ -170,46 +83,102 @@ page_bg_img = """
     }
     </style>
     """     
-st.markdown(page_bg_img, unsafe_allow_html=True)
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+    
+    st.markdown("<h1 style='color: rgba(0, 0, 0, 1)'>InvestMatch</h1>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: rgba(0, 0, 0, 1)'>Data Badgers Homepage</h2>", unsafe_allow_html=True)
 
-# Create the Streamlit application
-
-def page_home():
-    st.title("Data Badgers Homepage")
-    st.markdown("""
-                <div style="background-color: rgba(255, 255, 255, 0.8); padding: 20px;">
-                <h3><em>Welcome to the Startup Investment Decision Support app!</em></h3>
-                <p><h6>Welcome, dear reader, to the Startup Investment Decision Support app! Get ready to embark on a transformative journey as we unveil our groundbreaking platform that connects investors and startup founders, revolutionizing the investment landscape. Discover a world of tailored recommendations and personalized insights that will supercharge your investment strategy. With our innovative tools and empowering recommendations, you'll be poised to seize the most promising opportunities and unlock your path to investment success. Embrace the future of investing and join us on this thrilling adventure!<h6></p>
-                </div>
-                """,
-        unsafe_allow_html=True
-        )
-
-def page_about():
-    st.title("More about us")
     st.markdown(
         """
-        <div style="background-color: rgba(255, 255, 255, 0.8); padding: 20px;">            
-            <p>With our compelling "Call to Action" feature, investors can seamlessly transition to an external system where they can access comprehensive data and delve deeper into intriguing startups. Our platform also showcases insightful graphs and visualizations that highlight the performance of startups across different categories, enabling investors to gain a deeper understanding of industry trends and make data-driven investment decisions.</p>
-            <p>To get started, simply click the "Get Started" button and let our user-friendly sidebar guide you through the process. Input your investment preferences and desired funding amounts to refine your recommendations and discover the perfect investment opportunities. Join our platform today and unlock a world of investment possibilities, driving innovation and fostering growth in the startup ecosystem.</p>
-        
+        <div style="background-color: rgba(255, 255, 255, 0.8); padding: 20px;">
+            <h3><em style="color: rgba(0, 0, 0, 1)">Welcome to the Startup Investment Decision Support app!</em></h3>
+            <p><h6 style="color: rgba(0, 0, 0, 1)">Welcome, dear reader, to the Startup Investment Decision Support app! Get ready to embark on a transformative journey as we unveil our groundbreaking platform that connects investors and startup founders, revolutionizing the investment landscape. Discover a world of tailored recommendations and personalized insights that will supercharge your investment strategy. With our innovative tools and empowering recommendations, you'll be poised to seize the most promising opportunities and unlock your path to investment success. Embrace the future of investing and join us on this thrilling adventure!</h6></p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+def page_about():
+    page_bg_img = """
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background-image: url("https://img.freepik.com/premium-photo/ambitious-business-man-climbing-stairs-success_31965-3080.jpg?w=826");
+        background-size: cover;
+        background-position: top left;
+        background-repeat: no-repeat;
+    }
+    
+    [data-testid="stHeader"] {
+        background-color: rgba(0,0,0,0);
+    }
+    
+    [data-testid="Toolbar"] {
+        right: 2rem;
+    }
+    </style>
+    """     
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+    
+    st.markdown("<h1 style='color: rgba(0, 0, 0, 1)'>InvestMatch</h1>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: rgba(0, 0, 0, 1)'>More about us</h2>", unsafe_allow_html=True)
+    
+    st.markdown(
+        """
+        <div style="background-color: rgba(255, 255, 255, 0.8); padding: 20px;">
+            <p style="color: rgba(0, 0, 0, 1)">Introducing InvestMatch, the platform that connects investors and startup founders for seamless investment opportunities. With personalized recommendations, in-depth data analysis, and a user-friendly interface, InvestMatch revolutionizes the investment landscape.</p>
+            <p style="color: rgba(0, 0, 0, 1)">Investors can discover curated startups that align with their preferences and criteria, enabling them to make informed decisions and seize promising opportunities. Startup founders can showcase their ideas and connect with interested investors, gaining exposure to funding opportunities.</p>
+            <p style="color: rgba(0, 0, 0, 1)">InvestMatch's intuitive interface and "Get Started" button streamline navigation, while a call to action seamlessly connects investors to an external system for further data exploration and due diligence. Join InvestMatch today to unlock a world of investment possibilities, driving innovation and fostering growth in the startup ecosystem.</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # Button for GitHub link
+    st.markdown(
+        """
+        <div style="margin-top: 20px;">
+            <a href="https://github.com/FirenziaF/THE-BAGDGERS-CAPSTONE-PROJECT" target="_blank">
+                <button style="padding: 10px 20px; background-color: rgba(0, 123, 255, 1); color: white; border: none; border-radius: 5px;">
+                    Visit our GitHub
+                </button>
+            </a>
         </div>
         """,
         unsafe_allow_html=True
     )
 
 
-    
 def page_startup_info():
-    st.title("Startup Investment Decision Support")
-    st.subheader("We are here for you")
-    st.write("Input startup information here...")
+    
+    page_bg_img = """
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background-image: url("https://img.freepik.com/premium-photo/male-hand-holding-question-mark-icon-neon-redbluepurple-backgroundbanner-with-copy-space-place-text_150455-21042.jpg?w=996");
+        background-size: cover;
+        background-position: top left;
+        background-repeat: no-repeat;
+    }
+    
+    [data-testid="stHeader"] {
+        background-color: rgba(0,0,0,0);
+    }
+    
+    [data-testid="Toolbar"] {
+        right: 2rem;
+    }
+    </style>
+    """     
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+    
+    st.markdown("<h1 style='color: rgba(3, 3, 3, 6`)'>InvestMatch</h1>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: rgba(256, 256, 256, 1)'><em>StartUp Investment Decision Support</em></h2>", unsafe_allow_html=True)
+    st.write("View your predictions here.")
 
 def main():
-    # Set the title and description
-    st.sidebar.title("***Navigation***")
-    pages = ["Home", "Startup Information", "About"]
-    selected_page = st.sidebar.selectbox("Go to", pages)
+    # Create a topbar
+    with st.container():
+        pages = ["Home", "Startup Information", "About"]
+        selected_page = st.selectbox("Go to", pages)
     
     if selected_page == "Home":
         page_home()
@@ -220,78 +189,53 @@ def main():
     elif selected_page == "Startup Information":
         page_startup_info()
         
-        
+        # Load the model
+        model = load_model()
+
         # Startup Information Inputs
         st.sidebar.header("Startup Information")
-        industry = st.sidebar.selectbox("Industry", ["Biotechnology", "Software", "Healthcare", "Advertising", "Games", "Enterprise Software", "Curated Web", "E-commerce", "Mobile", "Other"])
-        funding_stage = st.sidebar.selectbox("Funding Stage", ["Seed", "Round A", "Round B", "Round C", "Round D"])
-        total_investment = st.sidebar.number_input("Total Investment", min_value=0.0)
-        equity_crowdfunding = st.sidebar.checkbox("Equity Crowdfunding")
-
-        # Investor Preferences Inputs
-        st.sidebar.header("Investor Preferences")
-        desired_investment = st.sidebar.number_input("Desired Investment Amount", min_value=0.0)
-        investment_timeframe = st.sidebar.selectbox("Investment Timeframe", ["Short-term", "Medium-term", "Long-term"])
-        risk_appetite = st.sidebar.slider("Risk Appetite", min_value=1, max_value=10, step=1)
-        desired_age = st.sidebar.slider("Desired Age", min_value=0, max_value=10, step=1)
-        #operating_status = ""  # placeholder variable until we get actual data from our database/model
         
+        # Dropdown for Founded Year
+        founded_year = st.sidebar.selectbox("Founded Year", list(range(1980, 2024)))
+        
+        # Input for funding year
+        time_to_first_funding = st.sidebar.number_input("Time to First Funding", min_value=0)
+                      
+        # Dropdown for Funding Rounds
+        funding_rounds = st.sidebar.slider("Funding Rounds", min_value=1, max_value=18, value=1)
+
+        round_B = st.sidebar.checkbox("Round B")
+        round_C = st.sidebar.checkbox("Round C")
+        round_D = st.sidebar.checkbox("Round D")
+        round_F = st.sidebar.checkbox("Round F")
+        
+        # Dropdown for Region
+        region = st.sidebar.selectbox("Region", list(region_cities_mapping.keys()))
+
+        # Dropdown for City based on selected Region
+        cities = region_cities_mapping.get(region, [])
+        city = st.sidebar.selectbox("City", cities)
+
+        # Dropdown for Industry Group
+        industry_group = st.sidebar.selectbox("Industry Group", ["Software", "Biotechnology", "Healthcare", "Mobile", "Advertising", "E-Commerce", "Curated Web", "Enterprise Software", "Games", "Other"])
+        
+
         # Perform predictions and recommendations
         if st.button("Generate Recommendations"):
-            # Call your model or recommendation engine to generate predictions and recommendations
-            # Based on the provided startup information and investor preferences
+            # Update the features with user inputs
+            features = [founded_year, time_to_first_funding, city, round_D, round_C, funding_rounds, industry_group, round_F, region, round_B]
 
-            features = [total_investment, equity_crowdfunding, desired_investment, investment_timeframe, risk_appetite, desired_age]
-            operating_status = "operational/ non-operational" # model.predict([features])  # Replace with model prediction
-            recommendations = ["Operational", "Acquired", "Closed"]  # Replace with recommendation engine results
+            # Perform prediction
+            prediction = predict_total_investment(features)
 
-            # Display the results
-            st.subheader("Predicted Operating Status:")
-            st.write(f"**{operating_status}**")
+            # Display the prediction
+            st.subheader("Investment Prediction:")
+            st.write(f"**{prediction}**")
 
-            st.subheader("Investment Recommendations:")
-            for recommendation in recommendations:
-                st.write("- " + f"**{recommendation}**")
-                
-            st.markdown("""
-                    <br><div style="background-color: rgba(255, 255, 255, 0.8); padding: 20px;">
-            <p>
-                <div style="max-height: 200px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px;">
-                    <h3 style="font-weight: bold; color: #333;">List of Countries</h3>
-                    <ul style="list-style-type: none; padding: 0;">
-                        <ol>
-                        <li>United States</li>
-                        <li>China</li>
-                        <li>Great Britain</li>
-                        <li>India</li>
-                        <li>Canada</li>
-                        <li>Germany</li>
-                        <li>Israel</li>
-                        <li>France</li>
-                        <li>Netherlands</li>
-                        <li>Spain</li>
-                        </ol>
-                    </ul>
-                </div>
-                <div style="text-align: center; font-size: 24px;">
-                    <img src="https://img.freepik.com/premium-vector/political-map-world_23-2147511327.jpg?8&w=740" alt="A map of the top ten countries" width="600">
-                </div>
-            </p>
-        </div>
-                    """, unsafe_allow_html=True
-                    )
-
-        # Display additional information or insights if needed
-        # Probable Locations
-        st.subheader("Investment Location")
-        probable_locations = ["New York City", "San Francisco", "London", "Austin", "Seattle", "Palo Alto", "Cambridge"]   # Add more locations based on predicted market
-        st.markdown("**Probable Location:** " + ", ".join([f"**{location}**" for location in probable_locations]))
-
-        # Placeholder div with image and increased font size
-        st.subheader("Levels")
-        st.markdown('<div style="text-align: center; font-size: 24px;"><img src="https://img.freepik.com/premium-photo/businessman-holding-tablet-showing-growing-virtual-hologram-statistics-graph-chart-with-arrow-up_34200-307.jpg?w=900" alt="A photo" width="600"></div>', unsafe_allow_html=True)
+            # Reverting back to no data
+            st.button("Revert")
+            
         
-           
 if __name__ == "__main__":
     main()
 

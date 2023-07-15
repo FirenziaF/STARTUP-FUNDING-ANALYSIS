@@ -35,6 +35,39 @@ However, it's worth noting that some models, such as AdaBoost and SVM, performed
 
 Overall, the XGBoost (Tuned) model stands out as the recommended choice due to its strong predictive performance. Further enhancements and optimizations can be explored to improve the model's accuracy and generalization capabilities.
 
+## Limitation of the Dataset.
+
+1. Limited Generalization: The model's poor performance on the test set suggests it struggles to apply learned patterns to new data.
+   
+2. Overfitting: The large train-test performance gap indicates the model has over-adapted to the training data, hindering its ability to generalize.
+   
+3. Data Variability: The dataset's lack of diversity may limit the model's exposure to various scenarios and real-world variations.
+   
+4. Unaccounted Factors: Missing relevant features or unconsidered factors in the dataset can limit the model's predictive capabilities and understanding.
+   
+## Conclusion and Recommendations
+1. Based on the analysis conducted in this project, several key findings and recommendations can be made to assist investors in making informed decisions:
+
+2. Investment-related variables such as total investment and funding rounds (e.g., round A, round B) have a significant impact on the operating status of startups. Investors should consider the overall investment levels and strategically plan and secure funding during critical funding rounds.
+
+3. Equity crowdfunding presents an attractive opportunity for startups to raise funds and attract potential investors. Investors should explore equity crowdfunding platforms to diversify their investment portfolio.
+
+4. Seed funding plays a crucial role in kick-starting startup operations and increasing their chances of success. Investors should pay attention to startups that have successfully secured seed funding.
+
+5. Industry-specific factors and dynamics significantly influence the operating status of startups. Investors should consider the industry group of startups and analyze its potential for growth and success.
+
+6. Venture funding and angel funding can provide valuable resources and expertise to fuel startup growth and expansion. Investors should actively seek opportunities to invest in startups that have secured venture capital or angel funding.
+
+These recommendations serve as a guide for investors to navigate the startup landscape and optimize their investment strategies.
+
+## Future Enhancements
+Future enhancements to this project could include:
+
+- Incorporating real-time data feeds to keep the model up-to-date and improve its predictive capabilities.
+Expanding the feature set by incorporating additional external data sources to provide a more comprehensive analysis.
+- Refining the model using advanced techniques such as ensemble learning or neural networks to enhance prediction accuracy.
+- Conducting further analysis on the impact of specific features on startup operating status.
+
 ## Deployment and Interactive Interface:
 The trained model was deployed using the Streamlit framework to create an interactive web application. The application allows users to input their investor preferences, such as desired investment amount, investment timeframe, and risk appetite. Based on these preferences and the selected features, the model generates predictions for the operating status of startups. Additionally, investment recommendations and additional information about recommended startups are provided to assist users in making informed investment decisions.
 
@@ -79,34 +112,6 @@ streamlit run app.py
 5. Explore the visualization and insights section to gain further understanding of the data and the factors influencing startup operating status.
 
 6. You can modify your investor preferences and click the "Generate Recommendations" button again to obtain updated predictions and recommendations.
-
-## Project Documentation
-For a detailed overview of the project, including the data preprocessing steps, EDA findings, feature engineering techniques, model training, and evaluation, please refer to the Project Documentation.
-
-
-
-## Conclusion and Recommendations
-1. Based on the analysis conducted in this project, several key findings and recommendations can be made to assist investors in making informed decisions:
-
-2. Investment-related variables such as total investment and funding rounds (e.g., round A, round B) have a significant impact on the operating status of startups. Investors should consider the overall investment levels and strategically plan and secure funding during critical funding rounds.
-
-3. Equity crowdfunding presents an attractive opportunity for startups to raise funds and attract potential investors. Investors should explore equity crowdfunding platforms to diversify their investment portfolio.
-
-4. Seed funding plays a crucial role in kick-starting startup operations and increasing their chances of success. Investors should pay attention to startups that have successfully secured seed funding.
-
-5. Industry-specific factors and dynamics significantly influence the operating status of startups. Investors should consider the industry group of startups and analyze its potential for growth and success.
-
-6. Venture funding and angel funding can provide valuable resources and expertise to fuel startup growth and expansion. Investors should actively seek opportunities to invest in startups that have secured venture capital or angel funding.
-
-These recommendations serve as a guide for investors to navigate the startup landscape and optimize their investment strategies.
-
-## Future Enhancements
-Future enhancements to this project could include:
-
-- Incorporating real-time data feeds to keep the model up-to-date and improve its predictive capabilities.
-Expanding the feature set by incorporating additional external data sources to provide a more comprehensive analysis.
-- Refining the model using advanced techniques such as ensemble learning or neural networks to enhance prediction accuracy.
-- Conducting further analysis on the impact of specific features on startup operating status.
 
 
 ## License

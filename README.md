@@ -83,11 +83,11 @@ For a detailed overview of the project, including the data preprocessing steps, 
 
 3. Equity crowdfunding presents an attractive opportunity for startups to raise funds and attract potential investors. Investors should explore equity crowdfunding platforms to diversify their investment portfolio.
 
-Seed funding plays a crucial role in kick-starting startup operations and increasing their chances of success. Investors should pay attention to startups that have successfully secured seed funding.
+4. Seed funding plays a crucial role in kick-starting startup operations and increasing their chances of success. Investors should pay attention to startups that have successfully secured seed funding.
 
-4. Industry-specific factors and dynamics significantly influence the operating status of startups. Investors should consider the industry group of startups and analyze its potential for growth and success.
+5. Industry-specific factors and dynamics significantly influence the operating status of startups. Investors should consider the industry group of startups and analyze its potential for growth and success.
 
-5. Venture funding and angel funding can provide valuable resources and expertise to fuel startup growth and expansion. Investors should actively seek opportunities to invest in startups that have secured venture capital or angel funding.
+6. Venture funding and angel funding can provide valuable resources and expertise to fuel startup growth and expansion. Investors should actively seek opportunities to invest in startups that have secured venture capital or angel funding.
 
 These recommendations serve as a guide for investors to navigate the startup landscape and optimize their investment strategies.
 

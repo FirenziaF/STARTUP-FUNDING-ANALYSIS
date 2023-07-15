@@ -18,11 +18,13 @@ Exploratory data analysis was conducted to gain insights into the dataset and un
 Feature engineering techniques were applied to enhance the predictive power of the model. New categorical features were created based on the values of certain numerical features, allowing for a more nuanced representation of the data. This step aimed to capture relevant information and improve the model's ability to predict the operating status of startups accurately.
 
 ## Model Training and Evaluation:
-In this project, four different machine learning models were trained and evaluated for the prediction of startup operating status: Decision Tree, Random Forest, XGBoost, and AdaBoost. Each model was trained on the preprocessed dataset and underwent hyperparameter tuning to optimize its performance.
+In this project, we evaluated several machine learning models for predicting the target variable. The models included Decision Tree, KNN, Random Forest, AdaBoost, Gradient Boosting, XGBoost, and SVM. We assessed the models based on their RMSE (Root Mean Squared Error) and R-squared metrics.
 
-After evaluating the models based on metrics such as accuracy, F1-score, precision, and recall, the Decision Tree model was chosen as the best-performing model. It demonstrated superior performance on the test set, achieving high accuracy, F1-score, precision, and recall. The Decision Tree model was selected for its ability to capture complex relationships within the data and provide transparent decision-making processes.
+The results revealed that the XGBoost (Tuned) model outperformed the other models. It achieved the lowest RMSE on the test set (74,876,296) and the highest R-squared value (0.227206). This indicates its superior accuracy in predicting the target variable and its ability to explain a significant proportion of the variance.
 
-The chosen Decision Tree model was further improved through hyperparameter tuning, utilizing techniques such as sequential feature selection(SFS). This process involved systematically exploring different combinations of hyperparameters to identify the optimal configuration that maximizes the model's performance.
+However, it's worth noting that some models, such as AdaBoost and SVM, performed poorly in terms of RMSE and R-squared, suggesting limitations in capturing the target variable's variations.
+
+Overall, the XGBoost (Tuned) model stands out as the recommended choice due to its strong predictive performance. Further enhancements and optimizations can be explored to improve the model's accuracy and generalization capabilities.
 
 ## Deployment and Interactive Interface:
 The trained model was deployed using the Streamlit framework to create an interactive web application. The application allows users to input their investor preferences, such as desired investment amount, investment timeframe, and risk appetite. Based on these preferences and the selected features, the model generates predictions for the operating status of startups. Additionally, investment recommendations and additional information about recommended startups are provided to assist users in making informed investment decisions.

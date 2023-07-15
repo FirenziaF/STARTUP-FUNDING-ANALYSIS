@@ -5,6 +5,15 @@
 ## Project Overview
 This data science project aims to predict the operating status of startups using machine learning techniques. The project involves analyzing a dataset containing information about startups, performing data preprocessing, conducting exploratory data analysis (EDA), feature engineering, model training, and deploying a predictive model using Streamlit.
 
+
+## Problem Statement
+
+Despite the rapid growth of the startup scene and the increasing investments from venture capital firms, understanding the dynamics and characteristics of these newly established firms remains a challenge. The chosen dataset provides a valuable glimpse into this captivating realm, presenting an opportunity to delve deeper and unravel the underlying trends and patterns within the startup ecosystem.
+
+## Project Objective
+
+The objective of this project is to analyze a startup dataset and derive valuable insights about the dynamics and characteristics of startups. By exploring funding trends, industry preferences, geographical distribution, and success metrics, we aim to provide actionable knowledge for entrepreneurs, investors, and policy-makers. The findings will contribute to a deeper understanding of the startup landscape and support informed decision-making to foster the growth of the startup ecosystem.
+
 ## Dataset
 The dataset used in this project consists of features related to startups, including funding details, investment amounts, funding rounds, and industry groups. The target variable is the operating status of the startups, which can be categorized as "closed," "operating," or "acquired." The dataset contains a combination of numerical and categorical features.
 

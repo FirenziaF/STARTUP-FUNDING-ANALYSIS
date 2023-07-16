@@ -131,8 +131,8 @@ Special thanks to our Moringa School Data Science Technical Mentors for their gu
 
 3. [Isaac Muturi](https://github.com/Isaac-Ndirangu-Muturi-749)
 
-4. Brian Chabari.
+4. [Brian Chabari](https://github.com/NyagahBrian)
 
-5. Diana Mwaura. 
+5. [Diana Mwaura](https://github.com/DianaNduta) 
 
 6. [Kennedy Juma](https://github.com/kenjuma) 

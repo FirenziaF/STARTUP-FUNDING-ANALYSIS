@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pickle
 
 # Load the pickled model
-model_path = 'xgb.pkl'  # Replace with the path to your pickled model
+model_path = 'xgb.pkl'  
 
 try:
     model = joblib.load(model_path)
@@ -14,7 +14,7 @@ except FileNotFoundError:
     st.stop()
 
 # Load the DataFrame and calculate column value counts
-df = pd.read_csv('datattt.csv')  # Replace with the path to your data file
+df = pd.read_csv('datattt.csv')  
 
 column_value_counts = {}
 

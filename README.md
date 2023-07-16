@@ -125,9 +125,9 @@ This project was developed by  as part of [Data Science Bootcamp] at [Moringa Sc
 
 Special thanks to our Moringa School Data Science Technical Mentors for their guidance throughout the project. We would also like to acknowledge the contributions of the Elites team members:
 
-1. Florence Nguuni
+1. [Florence Nguuni](https://github.com/FirenziaF)
 
-2. Joel Omondi.
+2. [Joel Omondi](https://github.com/Ed-Odhiambo)
 
 3. [Isaac Muturi](https://github.com/Isaac-Ndirangu-Muturi-749)
 
@@ -135,4 +135,4 @@ Special thanks to our Moringa School Data Science Technical Mentors for their gu
 
 5. Diana Mwaura. 
 
-6. Kennedy Juma. 
+6. [Kennedy Juma](https://github.com/kenjuma) 

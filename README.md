@@ -12,7 +12,7 @@ Despite the rapid growth of the startup scene and the increasing investments fro
 
 ## Project Objective
 
-The objective of this project is to analyze a startup dataset and derive valuable insights about the dynamics and characteristics of startups. By exploring funding trends, industry preferences, geographical distribution, and success metrics, we aim to provide actionable knowledge for entrepreneurs, investors, and policy-makers. The findings will contribute to a deeper understanding of the startup landscape and support informed decision-making to foster the growth of the startup ecosystem.
+The objective of this project is to analyze a startup dataset and derive valuable insights into the dynamics and characteristics of startups. By exploring funding trends, industry preferences, geographical distribution, and success metrics, we aim to provide actionable knowledge for entrepreneurs, investors, and policy-makers. The findings will contribute to a deeper understanding of the startup landscape and support informed decision-making to foster the growth of the startup ecosystem.
 
 ## Dataset
 The dataset used in this project consists of features related to startups, including funding details, investment amounts, funding rounds, and industry groups. The target variable is the operating status of the startups, which can be categorized as "closed," "operating," or "acquired." The dataset contains a combination of numerical and categorical features.
@@ -50,11 +50,11 @@ Overall, the XGBoost (Tuned) model stands out as the recommended choice due to i
 
 2. Investment-related variables such as total investment and funding rounds (e.g., round A, round B) have a significant impact on the operating status of startups. Investors should consider the overall investment levels and strategically plan and secure funding during critical funding rounds.
 
-3. Equity crowdfunding presents an attractive opportunity for startups to raise funds and attract potential investors. Investors should explore equity crowdfunding platforms to diversify their investment portfolio.
+3. Equity crowdfunding presents an attractive opportunity for startups to raise funds and attract potential investors. Investors should explore equity crowdfunding platforms to diversify their investment portfolios.
 
 4. Seed funding plays a crucial role in kick-starting startup operations and increasing their chances of success. Investors should pay attention to startups that have successfully secured seed funding.
 
-5. Industry-specific factors and dynamics significantly influence the operating status of startups. Investors should consider the industry group of startups and analyze its potential for growth and success.
+5. Industry-specific factors and dynamics significantly influence the operating status of startups. Investors should consider the industry group of startups and analyze their potential for growth and success.
 
 6. Venture funding and angel funding can provide valuable resources and expertise to fuel startup growth and expansion. Investors should actively seek opportunities to invest in startups that have secured venture capital or angel funding.
 
@@ -125,7 +125,7 @@ This project was developed by  as part of [Data Science Bootcamp] at [Moringa Sc
 
 Special thanks to our Moringa School Data Science Technical Mentors for their guidance throughout the project. We would also like to acknowledge the contributions of the Elites team members:
 
-1. [Florence Nguuni](https://github.com/FirenziaF)
+1. [Florence Nguuni](https://github.com/FirenziaF) - Team Lead.
 
 2. [Joel Omondi](https://github.com/Ed-Odhiambo)
 
